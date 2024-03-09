@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans&display=swap');
 
 :root {
-    --tile-size : 75px;
+    --tile-size : 70px;
     --light-tile : #e9edcc;
     --dark-tile : #779954;
     --bg-color : #202020;

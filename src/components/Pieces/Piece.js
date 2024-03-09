@@ -7,10 +7,9 @@ import { clearCandidates, generateCandidateMoves } from '../reducer/actions/move
 const Piece = ({ rank, file, piece }) => {
 
     const { appState, dispatch } = useAppContext();
-    const { turn, position } = appState;
+    const { turn, position, castlingDirection } = appState;
     const currentPosition = position[position.length - 1];
-
-
+    const prevPosition = position[position.length - 2];
 
     const onDragStart = e => {
         e.dataTransfer.effectAllowed = 'move';
@@ -18,9 +17,15 @@ const Piece = ({ rank, file, piece }) => {
         setTimeout(() => {
             e.target.style.display = 'none';
         }, 0);
-
         if (turn === piece[0]) {
-            const candidateMoves = arbiter.getRegularMoves({ position: currentPosition, piece, rank, file });
+            const candidateMoves = arbiter.getValidMoves({
+                position: currentPosition,
+                prevPosition,
+                castlingDirection: castlingDirection[turn],
+                piece,
+                rank,
+                file
+            });
             dispatch(generateCandidateMoves({ candidateMoves }));
         }
     };
@@ -35,8 +40,8 @@ const Piece = ({ rank, file, piece }) => {
             onDragStart={onDragStart}
             onDragEnd={onDragEnd}
         >
-            {rank === 0 ? <div className={file % 2 === 0 ? 'file-names even' : 'file-names odd'}>{String.fromCharCode(file + 97)}</div> : <></>}
-            {file === 0 ? <div className={rank % 2 === 0 ? 'rank-names even' : 'rank-names odd'}>{rank + 1}</div> : <></>}
+            {/* {rank === 0 ? <div className={file % 2 === 0 ? 'file-names even' : 'file-names odd'}>{String.fromCharCode(file + 97)}</div> : <></>}
+            {file === 0 ? <div className={rank % 2 === 0 ? 'rank-names even' : 'rank-names odd'}>{rank + 1}</div> : <></>} */}
         </div>
     )
 }

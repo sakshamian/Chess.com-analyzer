@@ -3,7 +3,8 @@ import './board.css'
 
 import Pieces from '../Pieces/Pieces'
 import { useAppContext } from '../../context/Context'
-// import PromotionBox from '../Popup/PromotionBox/PromotionBox'
+import Popup from '../Popup/Popup'
+import PromotionBox from '../Popup/PromotionBox/PromotionBox'
 // import Popup from '../Popup/Popup'
 // import GameEnds from '../Popup/GameEnds/GameEnds'
 
@@ -58,6 +59,8 @@ const Board = () => {
         </div>
 
         <Pieces />
+
+        <Popup />
     </div>
 
 }
