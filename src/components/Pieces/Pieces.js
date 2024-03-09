@@ -7,7 +7,7 @@ import { clearCandidates, makeNewMove } from '../reducer/actions/move';
 import arbiter from '../arbiter/arbiter';
 import { openPromotion } from '../reducer/actions/popup';
 import { getCastleDirections } from '../arbiter/getMoves';
-import { updateCastling } from '../reducer/actions/game';
+import { detectInsufficientMaterial, detectStalemate, updateCastling } from '../reducer/actions/game';
 
 const Pieces = () => {
     const ref = useRef();
@@ -63,6 +63,16 @@ const Pieces = () => {
                 x, y
             })
             dispatch(makeNewMove({ newPosition }));
+
+            console.log(piece);
+            const opponent = piece.startsWith('b') ? 'w' : 'b';
+            const castleDirection = appState.castlingDirection[`${piece.startsWith('b') ? 'white' : 'black'}`];
+
+            if (arbiter.insufficientMaterial(newPosition)) {
+                dispatch(detectInsufficientMaterial());
+            } else if (arbiter.isStalemate(newPosition, opponent, castleDirection)) {
+                dispatch(detectStalemate());
+            }
         }
 
         dispatch(clearCandidates());

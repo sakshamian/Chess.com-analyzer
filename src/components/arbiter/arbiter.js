@@ -1,3 +1,4 @@
+import { areSameColorTiles, findPieceCoords } from "../../helper";
 import { getBishopMoves, getKingMoves, getKnightMoves, getPawnCaptures, getPawnMoves, getQueenMoves, getRookMoves, getCastlingMoves, getkingPosition, getPieces, getKingPosition } from "./getMoves"
 import { movePawn, movePiece } from "./move";
 
@@ -25,7 +26,6 @@ const arbiter = {
                 ...moves,
                 ...getCastlingMoves({ position, castlingDirection, piece, rank, file })
             ]
-            console.log(getCastlingMoves({ position, castlingDirection, piece, rank, file }));
         }
 
         moves.forEach(([x, y]) => {
@@ -69,6 +69,41 @@ const arbiter = {
         else
             return false
     },
+    isStalemate: function (position, player, castleDirection) {
+        const isInCheck = this.isPlayerInCheck({ positionAfterMove: position, player });
+        if (isInCheck) return false;
+
+        const pieces = getPieces(position, player);
+        const moves = pieces.reduce((acc, p) => acc = [
+            ...acc,
+            ...(this.getValidMoves({
+                position,
+                castleDirection,
+                ...p
+            })
+            )
+        ], [])
+
+        return (!isInCheck && moves.length === 0)
+    },
+    insufficientMaterial: function (position) {
+        const pieces = position.reduce((acc, rank) => acc = [
+            ...acc,
+            ...rank.filter(x => x)
+        ], []);
+
+        if (pieces.length === 2) return true;
+        if (pieces.length === 3 && pieces.some(p => p.endsWith('b') || p.endsWith('n'))) return true;
+
+        if (pieces.length === 4 &&
+            pieces.every(p => p.endsWith('b') || p.endsWith('k')) &&
+            new Set(pieces).size === 4 &&
+            areSameColorTiles(
+                findPieceCoords(position, 'wb')[0],
+                findPieceCoords(position, 'bb')[0]
+            )
+        ) return true
+    }
 }
 
 

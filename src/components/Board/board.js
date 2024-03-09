@@ -6,6 +6,7 @@ import Popup from '../Popup/Popup'
 import PromotionBox from '../Popup/PromotionBox/PromotionBox'
 import { getKingPosition } from '../arbiter/getMoves'
 import arbiter from '../arbiter/arbiter'
+import GameEnds from '../Popup/GameEnds/GameEnds'
 // import Popup from '../Popup/Popup'
 // import GameEnds from '../Popup/GameEnds/GameEnds'
 
@@ -72,7 +73,10 @@ const Board = () => {
 
         <Pieces />
 
-        <Popup />
+        <Popup>
+            <PromotionBox />
+            <GameEnds />
+        </Popup>
     </div>
 
 }

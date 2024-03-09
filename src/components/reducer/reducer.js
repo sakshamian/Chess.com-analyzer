@@ -51,6 +51,23 @@ export const reducer = (state, action) => {
                 castlingDirection
             }
         }
+        case actionTypes.STALEMATE: {
+            return {
+                ...state,
+                status: Status.stalemate
+            }
+        }
+        case actionTypes.NEW_GAME: {
+            return {
+                ...action.payload
+            }
+        }
+        case actionTypes.INSUFFICIENT_MATERIAL: {
+            return {
+                ...state,
+                status: Status.insufficient
+            }
+        }
         default: {
             return state
         }
