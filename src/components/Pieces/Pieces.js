@@ -7,7 +7,7 @@ import { clearCandidates, makeNewMove } from '../reducer/actions/move';
 import arbiter from '../arbiter/arbiter';
 import { openPromotion } from '../reducer/actions/popup';
 import { getCastleDirections } from '../arbiter/getMoves';
-import { detectInsufficientMaterial, detectStalemate, updateCastling } from '../reducer/actions/game';
+import { detectInsufficientMaterial, detectStalemate, updateCastling, detectCheckmate } from '../reducer/actions/game';
 
 const Pieces = () => {
     const ref = useRef();
@@ -72,6 +72,8 @@ const Pieces = () => {
                 dispatch(detectInsufficientMaterial());
             } else if (arbiter.isStalemate(newPosition, opponent, castleDirection)) {
                 dispatch(detectStalemate());
+            } else if (arbiter.isCheckMate(newPosition, opponent, castleDirection)) {
+                dispatch(detectCheckmate(piece[0]));
             }
         }
 
