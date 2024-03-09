@@ -64,10 +64,8 @@
     content: '';
     width :  var(--tile-size);
     height :  var(--tile-size);
-    background: var(--check);
-    border-radius: 20px;
-    left: 0;
-    top: 0;
+    background: radial-gradient(ellipse at center, rgb(255, 0, 0) 0%, rgb(231, 0, 0) 25%, rgba(169, 0, 0, 0) 89%, rgba(158, 0, 0, 0) 100%);
+    border-radius: 25px;
 }
 
 .odd{

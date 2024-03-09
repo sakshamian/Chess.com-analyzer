@@ -6,7 +6,7 @@
     --dark-tile : #779954;
     --bg-color : #202020;
     --highlight : rgba(0,0,0,.1);
-    --check : #FEEC48;
+    --check : #f9ef97;
 }
 
 @media all and (max-width: 450px) {
