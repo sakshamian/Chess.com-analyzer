@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './pieces.css';
 import Piece from './Piece';
-import { copyPosition } from '../../helper';
+import { copyPosition, getNewMoveNotation } from '../../helper';
 import { useAppContext } from '../../context/Context';
 import { clearCandidates, makeNewMove } from '../reducer/actions/move';
 import arbiter from '../arbiter/arbiter';
@@ -61,10 +61,11 @@ const Pieces = () => {
                 position: currentPosition,
                 piece, rank, file,
                 x, y
-            })
-            dispatch(makeNewMove({ newPosition }));
+            });
 
-            console.log(piece);
+            const newMove = getNewMoveNotation({ piece, rank, file, x, y, position: currentPosition });
+            dispatch(makeNewMove({ newPosition, newMove }));
+
             const opponent = piece.startsWith('b') ? 'w' : 'b';
             const castleDirection = appState.castlingDirection[`${piece.startsWith('b') ? 'white' : 'black'}`];
 

@@ -12,6 +12,7 @@ export const Status = {
 export const initGameState = {
     position: [createPositions()],
     turn: 'w',
+    movesList: [],
     candidateMoves: [],
     promotionSquare: null,
     status: Status.ongoing,

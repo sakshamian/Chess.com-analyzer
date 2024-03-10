@@ -19,15 +19,18 @@ const PromotionBox = ({ onClosePopup }) => {
         const newPosition = copyPosition(appState.position[appState.position.length - 1]);
         newPosition[promotionSquare.rank][promotionSquare.file] = ''
         newPosition[promotionSquare.x][promotionSquare.y] = color + option;
-        // const newMove = getNewMoveNotation({
-        //     ...appState.selectedPiece,
-        //     x: promotionSquare.rank,
-        //     y: promotionSquare.file,
-        //     position: appState.position[appState.position.length - 1],
-        //     promotesTo: option
-        // })
+
+        const newMove = getNewMoveNotation({
+            ...promotionSquare,
+            piece: color + 'p',
+            // x: promotionSquare.rank,
+            // y: promotionSquare.file,
+            position: appState.position[appState.position.length - 1],
+            promotesTo: option
+        });
+
         dispatch(clearCandidates())
-        dispatch(makeNewMove({ newPosition }))
+        dispatch(makeNewMove({ newPosition, newMove }))
     };
     const getPromotionBoxPosition = () => {
         let style = {}
