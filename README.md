@@ -11,6 +11,10 @@ A compelling chess application designed for both friendly play and strategic ana
 
 - ReactJs
 
+![image](https://github.com/sakshamian/Chess.com-analyzer/assets/90832897/1e083028-2fdc-40d6-b840-df4cf1ddc85d)
+![image](https://github.com/sakshamian/Chess.com-analyzer/assets/90832897/9add46ee-96c2-4d93-9613-703583b78e03)
+![image](https://github.com/sakshamian/Chess.com-analyzer/assets/90832897/e0c815cd-59f5-4bfc-96bb-af3678a112a8)
+
 ## Installation
 
 Follow the steps below to install and run the project on your local machine:
