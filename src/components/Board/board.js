@@ -1,5 +1,4 @@
 import './board.css'
-// import { useAppContext } from '../../contexts/Context'
 import Pieces from '../Pieces/Pieces'
 import { useAppContext } from '../../context/Context'
 import Popup from '../Popup/Popup'
@@ -7,10 +6,6 @@ import PromotionBox from '../Popup/PromotionBox/PromotionBox'
 import { getKingPosition } from '../arbiter/getMoves'
 import arbiter from '../arbiter/arbiter'
 import GameEnds from '../Popup/GameEnds/GameEnds'
-// import Popup from '../Popup/Popup'
-// import GameEnds from '../Popup/GameEnds/GameEnds'
-
-
 
 const Board = () => {
     const ranks = Array(8).fill().map((x, i) => 8 - i)

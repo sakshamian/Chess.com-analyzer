@@ -1,4 +1,3 @@
-import PromotionBox from './PromotionBox/PromotionBox';
 import React from 'react';
 import './popup.css';
 import { useAppContext } from '../../context/Context';

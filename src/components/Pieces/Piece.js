@@ -1,8 +1,7 @@
 import React from 'react'
 import { useAppContext } from '../../context/Context';
-import { getMoves } from '../arbiter/getMoves';
 import arbiter from '../arbiter/arbiter';
-import { clearCandidates, generateCandidateMoves } from '../reducer/actions/move';
+import { generateCandidateMoves } from '../reducer/actions/move';
 
 const Piece = ({ rank, file, piece }) => {
 

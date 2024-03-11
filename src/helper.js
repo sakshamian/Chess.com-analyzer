@@ -37,7 +37,6 @@ export const copyPosition = (position) => {
 
 export const getNewMoveNotation = ({ piece, rank, file, x, y, position, promotesTo }) => {
     let note = ''
-    console.log("xx", piece, rank, file, x, y, position, promotesTo);
     rank = Number(rank)
     file = Number(file)
     if (piece[1] === 'k' && Math.abs(file - y) === 2) {

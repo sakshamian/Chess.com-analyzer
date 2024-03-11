@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import './pieces.css';
 import Piece from './Piece';
-import { copyPosition, getNewMoveNotation } from '../../helper';
+import { getNewMoveNotation } from '../../helper';
 import { useAppContext } from '../../context/Context';
 import { clearCandidates, makeNewMove } from '../reducer/actions/move';
 import arbiter from '../arbiter/arbiter';
