@@ -5,7 +5,7 @@
     flex: 1 1;
     flex-wrap: wrap;
     align-content: start;
-    overflow: auto;
+    overflow: scroll;
     font-size: 1.1em;
 }
 .moves-list div {

@@ -6,3 +6,13 @@
     height: calc(8*var(--tile-size));
     margin-left: 15px;
 }
+
+@media all and (max-width: 800px) {
+    .control{
+        flex-direction: row;
+        width: calc(8*var(--tile-size));
+        justify-content: space-between;
+        height: 100px;
+        overflow-y: scroll;
+    }
+}

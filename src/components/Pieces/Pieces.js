@@ -62,6 +62,10 @@ const Pieces = () => {
                 piece, rank, file,
                 x, y
             });
+            if (piece.endsWith('p') && !newPosition[x][y] && x !== rank && y !== file) {
+                newPosition[rank][y] = '';
+                console.log("control");
+            }
 
             const newMove = getNewMoveNotation({ piece, rank, file, x, y, position: currentPosition });
             dispatch(makeNewMove({ newPosition, newMove }));

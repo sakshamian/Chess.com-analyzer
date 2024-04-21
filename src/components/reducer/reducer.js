@@ -87,6 +87,7 @@ export const reducer = (state, action) => {
 
             if (position.length > 1) {
                 position = position.slice(0, position.length - 1);
+                console.log(movesList[movesList.length - 1]);
                 movesList = movesList.slice(0, movesList.length - 1);
                 turn = turn === 'w' ? 'b' : 'w'
             }
